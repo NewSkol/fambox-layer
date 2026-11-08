@@ -1,0 +1,173 @@
+/* Copied unchanged from docs/design/handoff/tokens.css (the design source of truth). Update there first. */
+/* FamBox design tokens, Table system v1 (October 2026).
+   Fonts (Google Fonts, free):
+   <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Albert+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+   Theme is set with data-theme on <html>: "day" (default), "night", "wall", "paper".
+   Every theme block has the same specificity as :root, so a later block wins: keep the day values first. */
+
+:root,
+[data-theme="day"] {
+  --fb-paper: #F4EFE3;        /* page */
+  --fb-surface: #FBF8F1;      /* blocks, cards */
+  --fb-sunk: #ECE5D4;         /* fields, second buttons */
+  --fb-line: #D9D2C1;         /* hairlines, dotted leaders */
+  --fb-line-strong: #CFC7B4;
+  --fb-ink: #1F3B2F;          /* all text, the table, main button. 10.6:1 on paper */
+  --fb-ink-muted: #55695E;    /* secondary text. 5.1:1 */
+  --fb-ink-soft: #3C5448;     /* body copy on paper */
+  --fb-on-ink: #F4EFE3;       /* text on the main button */
+  --fb-tomato: #B83C25;       /* needs a person. Status strip, errors only. 4.9:1 */
+  --fb-mustard: #D9A23B;      /* sun, agent, "now", focus ring. Never text */
+  --fb-mustard-wash: #F6E7C2; /* today, success backgrounds */
+  --fb-night: #7FA9CF;        /* evening, the moon */
+  --fb-ribbon: linear-gradient(90deg, #E6D7B4, #F2D27A 40%, #E7B98A 72%, #9FB1C2 100%);
+  /* Depth (letterpress). Defined here, before Night and Wall, so their darker edges win (same specificity, later wins). */
+  --fb-depth-pressed: inset 0 2px 5px rgba(31,59,47,.12), inset 0 -1px 0 rgba(255,255,255,.9);
+  --fb-depth-sunk: inset 0 2px 4px rgba(31,59,47,.20), inset 0 -1px 0 rgba(255,255,255,.8);
+  --fb-depth-raised: inset 0 1px 0 rgba(255,255,255,.18), 0 1px 0 #FFFFFF, 0 3px 8px -2px rgba(31,59,47,.45);
+  --fb-depth-raised-hover: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 0 #FFFFFF, 0 6px 12px -3px rgba(31,59,47,.5);
+  --fb-depth-raised-pressed: inset 0 3px 6px rgba(0,0,0,.45), 0 1px 0 #FFFFFF;
+  --fb-depth-tab: 0 1px 0 #FFFFFF, 0 2px 5px -2px rgba(31,59,47,.35);   /* the lit choice in a switch */
+}
+
+[data-theme="night"] {
+  --fb-paper: #13241D;
+  --fb-surface: #1B3027;
+  --fb-sunk: #0F1D17;
+  --fb-line: #2A4136;
+  --fb-line-strong: #34503F;
+  --fb-ink: #F1EBDD;          /* 13.5:1 */
+  --fb-ink-muted: #B9C2B5;    /* 8.8:1 */
+  --fb-ink-soft: #D6DCD2;
+  --fb-on-ink: #13241D;
+  --fb-tomato: #F08A6B;
+  --fb-mustard: #E5B65A;
+  --fb-mustard-wash: #3A3A24;
+  --fb-night: #9FB8D6;
+  --fb-ribbon: linear-gradient(90deg, #3A4A3F, #6B6A45 40%, #6A5444 72%, #3F5266 100%);
+  /* no light edge on dark */
+  --fb-depth-pressed: inset 0 2px 5px rgba(0,0,0,.28), inset 0 -1px 0 rgba(255,255,255,.04);
+  --fb-depth-sunk: inset 0 2px 4px rgba(0,0,0,.35), inset 0 -1px 0 rgba(255,255,255,.04);
+  --fb-depth-raised: inset 0 1px 0 rgba(255,255,255,.12), 0 3px 8px -2px rgba(0,0,0,.5);
+  --fb-depth-raised-hover: inset 0 1px 0 rgba(255,255,255,.14), 0 6px 12px -3px rgba(0,0,0,.55);
+  --fb-depth-raised-pressed: inset 0 3px 6px rgba(0,0,0,.45);
+  --fb-depth-tab: 0 2px 5px -2px rgba(0,0,0,.5);
+}
+
+[data-theme="wall"] {
+  --fb-paper: #0B1410;
+  --fb-surface: #13201A;
+  --fb-sunk: #08100C;
+  --fb-line: #1E2E26;         /* rules at least 2px */
+  --fb-line-strong: #2E4038;
+  --fb-ink: #F7F1E4;          /* about 16:1 */
+  --fb-ink-muted: #C3CCC0;
+  --fb-ink-soft: #D8D0BF;
+  --fb-on-ink: #0B1410;
+  --fb-tomato: #F59A7E;
+  --fb-mustard: #E5B65A;
+  --fb-mustard-wash: #2E2B1C;
+  --fb-night: #9FB8D6;
+  --fb-type-scale: 1.6;       /* multiply every type size except room-xl */
+  /* no light edge on dark */
+  --fb-depth-pressed: inset 0 2px 5px rgba(0,0,0,.28), inset 0 -1px 0 rgba(255,255,255,.04);
+  --fb-depth-sunk: inset 0 2px 4px rgba(0,0,0,.35), inset 0 -1px 0 rgba(255,255,255,.04);
+  --fb-depth-raised: inset 0 1px 0 rgba(255,255,255,.12), 0 3px 8px -2px rgba(0,0,0,.5);
+  --fb-depth-raised-hover: inset 0 1px 0 rgba(255,255,255,.14), 0 6px 12px -3px rgba(0,0,0,.55);
+  --fb-depth-raised-pressed: inset 0 3px 6px rgba(0,0,0,.45);
+  --fb-depth-tab: 0 2px 5px -2px rgba(0,0,0,.5);
+}
+
+[data-theme="paper"] {        /* calm, e-ink friendly, one ink, fades only */
+  --fb-paper: #EEEDE8;
+  --fb-surface: #F7F7F4;
+  --fb-sunk: #E2E1DB;
+  --fb-line: #C9C8C1;
+  --fb-line-strong: #B5B4AD;
+  --fb-ink: #1A1A1A;
+  --fb-ink-muted: #4D4D4D;
+  --fb-ink-soft: #333333;
+  --fb-on-ink: #F7F7F4;
+  --fb-tomato: #1A1A1A;       /* "needs a person" becomes a bold rule, not colour */
+  --fb-mustard: #8C8C86;      /* sun drawn as an outline */
+  --fb-mustard-wash: #E2E1DB;
+  --fb-night: #8C8C86;
+  --fb-ribbon: #C9C8C1;
+}
+
+:root {
+  /* People: one chair colour each. Text colour on the chair in the comment. */
+  --fb-person-teal: #2F7A78;      /* text #FFFFFF */
+  --fb-person-sky: #7FA9CF;       /* text #1F3B2F */
+  --fb-person-plum: #8F5C7E;      /* text #FFFFFF */
+  --fb-person-sage: #7FA77B;      /* text #1F3B2F */
+  --fb-person-rose: #D98A9B;      /* text #1F3B2F */
+  --fb-person-clay: #A0613F;      /* text #FFFFFF */
+  --fb-person-lavender: #9D8FC9;  /* text #1F3B2F */
+  --fb-person-olive: #6F6D2E;     /* text #FFFFFF */
+  /* Night and wall versions (lifted for dark backgrounds) */
+  --fb-person-teal-night: #4F9C99;
+  --fb-person-sky-night: #9FC0E0;
+  --fb-person-plum-night: #B07FA0;
+  --fb-person-sage-night: #9DC299;
+  --fb-person-rose-night: #E8A9B6;
+  --fb-person-clay-night: #C08060;
+  --fb-person-lavender-night: #B8ADDD;
+  --fb-person-olive-night: #A3A160;
+
+  /* Type. Gloock: one weight (400). Albert Sans: variable 400 to 800. */
+  --fb-font-display: "Gloock", Georgia, serif;
+  --fb-font-text: "Albert Sans", system-ui, sans-serif;
+  --fb-type-room-xl: 400 160px/0.9 var(--fb-font-display);   /* wall clock, letter-spacing -0.01em */
+  --fb-type-room: 400 96px/0.92 var(--fb-font-display);      /* clock, countdown number */
+  --fb-type-display: 400 56px/1.0 var(--fb-font-display);    /* page titles; 40px on phone */
+  --fb-type-title: 400 36px/1.1 var(--fb-font-display);      /* large block titles */
+  --fb-type-block: 400 24px/1.2 var(--fb-font-display);      /* block titles */
+  --fb-type-heading: 700 20px/1.3 var(--fb-font-text);
+  --fb-type-body: 400 17px/1.55 var(--fb-font-text);
+  --fb-type-small: 500 15px/1.45 var(--fb-font-text);
+  --fb-type-label: 700 12px/1.3 var(--fb-font-text);         /* uppercase, letter-spacing 0.08em */
+
+  /* Space, base 4 */
+  --fb-space-4: 4px;   --fb-space-8: 8px;   --fb-space-12: 12px;  --fb-space-16: 16px;
+  --fb-space-20: 20px; --fb-space-24: 24px; --fb-space-32: 32px;  --fb-space-48: 48px;
+  --fb-space-64: 64px; --fb-space-96: 96px;
+
+  /* Radius */
+  --fb-radius-pill: 999px;   /* buttons, chips */
+  --fb-radius-field: 16px;
+  --fb-radius-block: 28px;
+  --fb-radius-panel: 40px;
+  --fb-radius-frame: 54px;   /* phone mock only */
+
+  /* Depth (letterpress). The day values sit in the first block above, so Night and Wall can override them. */
+  --fb-depth-lifted: 0 24px 40px -16px rgba(31,59,47,.5), 0 0 0 2px var(--fb-mustard);
+  --fb-depth-card: 0 8px 16px -10px rgba(31,59,47,.4);       /* tear-off countdown pages */
+  --fb-focus: 0 0 0 2px var(--fb-paper), 0 0 0 5px var(--fb-mustard);
+
+  /* Motion */
+  --fb-ease: cubic-bezier(.2, .8, .2, 1);
+  --fb-ease-chair: cubic-bezier(.34, 1.4, .64, 1);
+  --fb-ease-leave: cubic-bezier(.4, 0, 1, 1);
+  --fb-dur-press: 120ms;
+  --fb-dur-switch: 200ms;
+  --fb-dur-chair: 320ms;
+  --fb-dur-arrive: 480ms;
+  --fb-dur-tear: 600ms;
+  --fb-dur-set-table: 800ms;    /* stagger 60ms per block */
+  --fb-dur-celebrate: 1200ms;
+  --fb-dur-celebrate-big: 2500ms;
+  --fb-dur-lights-down: 3000ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --fb-dur-switch: 0ms;
+    --fb-dur-chair: 120ms;   /* fade only, no movement */
+    --fb-dur-arrive: 120ms;
+    --fb-dur-tear: 0ms;
+    --fb-dur-set-table: 0ms;
+    --fb-dur-celebrate: 0ms;
+    --fb-dur-celebrate-big: 0ms;
+  }
+}
